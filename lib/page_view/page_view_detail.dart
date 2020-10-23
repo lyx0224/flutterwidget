@@ -11,7 +11,29 @@ class PageViewDetail extends StatefulWidget {
   _PageViewDetailState createState() => _PageViewDetailState();
 }
 
-class _PageViewDetailState extends State<PageViewDetail> {
+class _PageViewDetailState extends State<PageViewDetail>
+    with SingleTickerProviderStateMixin {
+  AnimationController _animationController;
+  Animation<Offset> _moveAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 1))
+          ..forward();
+    _moveAnimation = Tween<Offset>(begin: Offset(0, 1), end: Offset.zero)
+        .animate(CurvedAnimation(
+            parent: _animationController,
+            curve: Interval(0.25, 1.0, curve: Curves.fastOutSlowIn)));
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var index = widget.index;
@@ -19,10 +41,14 @@ class _PageViewDetailState extends State<PageViewDetail> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            title: Text('detail: $index'),
+            pinned: true,
+            actions: <Widget>[
+              IconButton(icon: Icon(Icons.accessible), onPressed: null)
+            ],
             expandedHeight: 200.0,
             backgroundColor: Colors.pink,
             flexibleSpace: FlexibleSpaceBar(
+              title: Text('index is $index'),
               background: Image.network(
                 widget.url,
                 fit: BoxFit.fill,
@@ -30,6 +56,7 @@ class _PageViewDetailState extends State<PageViewDetail> {
             ),
           ),
           SliverList(
+              //children不能是ListView了？Row可以
               delegate: SliverChildListDelegate(
                   [_createImageInfoWidget(), _createListWidget()]))
         ],
@@ -64,12 +91,29 @@ class _PageViewDetailState extends State<PageViewDetail> {
     );
   }
 
+  // do not use ListView
   Widget _createListWidget() {
-    return Container(
-      height: 600,
-      alignment: Alignment.center,
-      child: Text('other'),
-      color: Colors.blue,
+    return AnimatedBuilder(
+      animation: _animationController,
+      builder: (BuildContext context, Widget child) {
+        //Offset转变
+        return FractionalTranslation(
+          translation: _moveAnimation.value,
+          child: child,
+        );
+      },
+      child: Column(
+        children: <Widget>[
+          ...List<Widget>.generate(
+              20,
+              (index) => Container(
+                    height: 50.0,
+                    color: Colors.red.withAlpha(index * 255 ~/ 20),
+                    alignment: Alignment.center,
+                    child: Text('item $index'),
+                  ))
+        ],
+      ),
     );
   }
 }
