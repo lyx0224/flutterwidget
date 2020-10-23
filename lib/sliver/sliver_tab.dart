@@ -51,9 +51,17 @@ class SliverWithTab extends StatelessWidget {
                 child: Text('tab content1'),
               ),
               Container(
-                color: Colors.blue,
-                alignment: Alignment.center,
-                child: Text('tab content2'),
+                child: ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      height: 50.0,
+                      alignment: Alignment.center,
+                      child: Text('item$index'),
+                      color: Colors.red.withAlpha(index * 255 ~/ 20),
+                    );
+                  },
+                  itemCount: 20,
+                ),
               )
             ])),
       ),
