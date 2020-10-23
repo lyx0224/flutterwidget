@@ -20,7 +20,7 @@ class SliverDemo1 extends StatelessWidget {
                 title: Text('FlexibleSpaceBar'),
                 background: Image.network(
                   'https://r-cf.bstatic.com/images/hotel/max1024x768/116/116281457.jpg',
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.fitWidth,
                 ),
               ),
             ),
