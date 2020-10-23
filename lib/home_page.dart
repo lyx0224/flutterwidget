@@ -36,6 +36,22 @@ class HomePage extends StatelessWidget {
                   child: Text('sliver_with_tab'),
                 )
               ],
+            ),
+            Padding(
+              child: Text('page view'),
+              padding: EdgeInsets.symmetric(vertical: 10),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                RaisedButton(
+                  color: Colors.yellowAccent,
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('page_view_demo');
+                  },
+                  child: Text('page view'),
+                )
+              ],
             )
           ],
         ),
