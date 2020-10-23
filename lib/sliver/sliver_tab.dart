@@ -7,6 +7,7 @@ class SliverWithTab extends StatelessWidget {
       body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
+            //Typically this is used to create a [SliverAppBar] with a [TabBar].
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
@@ -45,23 +46,21 @@ class SliverWithTab extends StatelessWidget {
               ];
             },
             body: TabBarView(children: [
+              ListView.builder(
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    height: 50.0,
+                    alignment: Alignment.center,
+                    child: Text('item$index'),
+                    color: Colors.red.withAlpha(index * 255 ~/ 20),
+                  );
+                },
+                itemCount: 20,
+              ),
               Container(
                 color: Colors.pink,
                 alignment: Alignment.center,
                 child: Text('tab content1'),
-              ),
-              Container(
-                child: ListView.builder(
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      height: 50.0,
-                      alignment: Alignment.center,
-                      child: Text('item$index'),
-                      color: Colors.red.withAlpha(index * 255 ~/ 20),
-                    );
-                  },
-                  itemCount: 20,
-                ),
               )
             ])),
       ),
