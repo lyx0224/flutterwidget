@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:myflutterwiget/basic.dart';
 import 'package:myflutterwiget/home_page.dart';
 import 'package:myflutterwiget/page_view/pag_view_demo.dart';
 import 'package:myflutterwiget/page_view/page_view_detail.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
           'sliver_demo_2': (context) => SliverDemo2(),
           'sliver_with_tab': (context) => SliverWithTab(),
           'page_view_demo': (context) => PageViewDemo(),
+          'basic_widget': (context) => BasicWiget()
           //'page_view_detail': (context) => PageViewDetail()
         },
         //给带名字的页面传值用（Pass arguments to a named route）

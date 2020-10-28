@@ -52,6 +52,20 @@ class HomePage extends StatelessWidget {
                   child: Text('page view'),
                 )
               ],
+            ),
+            Padding(
+              child: Text('basic wiget'),
+              padding: EdgeInsets.symmetric(vertical: 10),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('basic_widget');
+              },
+              color: Colors.pink,
+              child: Text(
+                'basic',
+                style: TextStyle(color: Colors.white),
+              ),
             )
           ],
         ),
