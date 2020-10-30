@@ -31,6 +31,20 @@ class BasicWiget extends StatelessWidget {
                   )
                 ],
               ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            FlatButton(
+              disabledColor: Colors.grey, //when onPressed is null
+              onPressed: () {},
+              child: Text(
+                'more',
+                style: TextStyle(color: Colors.white),
+              ),
+              color: Colors.green,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)),
             )
           ],
         ),

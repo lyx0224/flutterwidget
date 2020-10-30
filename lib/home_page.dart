@@ -66,6 +66,36 @@ class HomePage extends StatelessWidget {
                 'basic',
                 style: TextStyle(color: Colors.white),
               ),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('demo_bottom_tab_bar');
+              },
+              color: Colors.pink,
+              child: Text(
+                'bottom tab bar',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('text_span_demo');
+              },
+              color: Colors.blue,
+              child: Text(
+                'text span',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('pull_to_refresh_demo');
+              },
+              color: Colors.black,
+              child: Text(
+                'pull_to_refresh_demo',
+                style: TextStyle(color: Colors.white),
+              ),
             )
           ],
         ),
