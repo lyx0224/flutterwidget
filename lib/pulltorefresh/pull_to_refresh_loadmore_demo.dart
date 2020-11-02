@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:loadmore/loadmore.dart';
 import 'package:myflutterwiget/pulltorefresh/refresh_header.dart';
@@ -79,7 +81,14 @@ class _PullToRefreshLoadMoreDemoState extends State<PullToRefreshLoadMoreDemo> {
 
   Future<bool> _loadMore() async {
     await Future.delayed(Duration(seconds: 3));
-    _load();
-    return true;
+    var random = Random().nextInt(2);
+    if (random == 0) {
+      _load();
+      //加载成功
+      return true;
+    } else {
+      //加载失败
+      return false;
+    }
   }
 }
