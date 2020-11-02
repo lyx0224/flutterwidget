@@ -86,7 +86,7 @@ LableBuilder _lableBuilder() {
       case refresh.RefreshIndicatorMode.refresh:
         return "正在更新...";
       case refresh.RefreshIndicatorMode.done:
-        return "完成";
+        return "加载完成";
       case refresh.RefreshIndicatorMode.canceled:
         return "上拉更新";
       case refresh.RefreshIndicatorMode.error:
@@ -116,7 +116,11 @@ AnimationIconBulder _animationIconBulder() {
         );
         break;
       case refresh.RefreshIndicatorMode.refresh:
-        child = CircularProgressIndicator();
+        child = SizedBox(
+          child: CircularProgressIndicator(),
+          width: 20.0,
+          height: 20.0,
+        );
         break;
       default:
         child = Container();

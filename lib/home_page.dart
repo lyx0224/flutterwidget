@@ -96,6 +96,16 @@ class HomePage extends StatelessWidget {
                 'pull_to_refresh_demo',
                 style: TextStyle(color: Colors.white),
               ),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('pull_to_refesh_loadmore_demo');
+              },
+              color: Colors.black,
+              child: Text(
+                'pull_to_refresh_loadmore_demo',
+                style: TextStyle(color: Colors.white),
+              ),
             )
           ],
         ),
