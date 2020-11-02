@@ -27,7 +27,7 @@ class SliverWithTab extends StatelessWidget {
                     ),
                   ),
                 ),
-                //一般和headerSliverBuilder使用
+                //tab固定话用SliverPersistentHeader，一般和headerSliverBuilder使用
                 SliverPersistentHeader(
                     pinned: true,
                     delegate: _SliverAppBarDelegate(TabBar(

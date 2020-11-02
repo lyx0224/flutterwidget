@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myflutterwiget/pulltorefresh/refresh_header.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
 
 class PullToRefreshDemo extends StatelessWidget {
@@ -12,7 +13,8 @@ class PullToRefreshDemo extends StatelessWidget {
             color: Colors.blue,
             child: CustomScrollView(
               slivers: <Widget>[
-                PullToRefreshContainer(buildPulltoRefreshHeader),
+                //PullToRefreshContainer(buildPulltoRefreshHeader),
+                RefreshHeader(),
                 SliverToBoxAdapter(
                   child: Container(
                     height: 100,
