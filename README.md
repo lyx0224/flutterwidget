@@ -1,23 +1,19 @@
 # myflutterwiget
 
-## 1、sliver
+|  sliver   | sliver2  | sliver with tab |
+|  :----:   | :----:   | :----: |
+| ![](doc/sliver.gif)  | ![](doc/sliver2.gif) | ![](doc/sliver_with_tab.gif)
 
-![](doc/sliver.gif)
 
-## 2、sliver2
-![](doc/sliver2.gif)
+|  下拉刷新、上拉加载  | 仅下拉刷新 |
+|  :----:  | :----: |
+| ![](doc/pull_to_refresh_loadmore.gif)  | ![](doc/pull_to_refresh.gif) |
 
-## 3、sliver with tab
-![](doc/sliver_with_tab.gif)
+| Dio网络请求 |
+| :----: |
+| ![](doc/dio.gif) |
 
-## 4、下拉刷新
-![](doc/pull_to_refresh.gif)
 
-## 5、下拉刷新、上拉加载
-![](doc/pull_to_refresh_loadmore.gif)
-
-## 6、Dio网络请求
-![](doc/dio.gif)
 
 
 
