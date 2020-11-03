@@ -1,16 +1,23 @@
 # myflutterwiget
 
-A new Flutter project.
+## 1、sliver
 
-## Getting Started
+![](doc/sliver.gif)
 
-This project is a starting point for a Flutter application.
+## 2、sliver2
+![](doc/sliver2.gif)
 
-A few resources to get you started if this is your first Flutter project:
+## 3、sliver with tab
+![](doc/sliver_with_tab.gif)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## 4、下拉刷新
+![](doc/pull_to_refresh.gif)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 5、下拉刷新、上拉加载
+![](doc/pull_to_refresh_loadmore.gif)
+
+## 6、Dio网络请求
+![](doc/dio.gif)
+
+
+
