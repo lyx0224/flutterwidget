@@ -4,6 +4,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:myflutterwiget/basic.dart';
 import 'package:myflutterwiget/bottom_tab_bar/demo.dart';
+import 'package:myflutterwiget/dio/dio_demo.dart';
 import 'package:myflutterwiget/home_page.dart';
 import 'package:myflutterwiget/page_view/pag_view_demo.dart';
 import 'package:myflutterwiget/page_view/page_view_detail.dart';
@@ -14,6 +15,8 @@ import 'package:myflutterwiget/sliver/sliver_demo2.dart';
 import 'package:myflutterwiget/sliver/sliver_tab.dart';
 import 'package:myflutterwiget/textspan/text_span_demo.dart';
 
+import 'dio/dio_demo2.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -22,6 +25,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
+          textTheme:
+              TextTheme(title: TextStyle(color: Colors.white, fontSize: 14.0)),
+          primaryColor: Colors.blueAccent,
           primarySwatch: Colors.blue,
         ),
         routes: <String, WidgetBuilder>{
@@ -34,7 +40,9 @@ class MyApp extends StatelessWidget {
           'text_span_demo': (context) => TextSpanDemo(),
           'pull_to_refresh_demo': (context) => PullToRefreshDemo(),
           'pull_to_refesh_loadmore_demo': (context) =>
-              PullToRefreshLoadMoreDemo()
+              PullToRefreshLoadMoreDemo(),
+          'dio_demo': (context) => DioDemo(),
+          'dio_demo2': (context) => DioDemo2()
           //'page_view_detail': (context) => PageViewDetail()
         },
         //给带名字的页面传值用（Pass arguments to a named route）

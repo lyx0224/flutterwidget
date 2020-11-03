@@ -45,6 +45,10 @@ class BasicWiget extends StatelessWidget {
               color: Colors.green,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)),
+            ),
+            Text(
+              'theme color',
+              style: TextStyle(color: Theme.of(context).primaryColor),
             )
           ],
         ),

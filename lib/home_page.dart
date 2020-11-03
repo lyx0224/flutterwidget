@@ -106,6 +106,20 @@ class HomePage extends StatelessWidget {
                 'pull_to_refresh_loadmore_demo',
                 style: TextStyle(color: Colors.white),
               ),
+            ),
+            RaisedButton(
+              color: Colors.amber,
+              onPressed: () {
+                Navigator.of(context).pushNamed('dio_demo');
+              },
+              child: Text('dio simple'),
+            ),
+            RaisedButton(
+              color: Colors.amber,
+              onPressed: () {
+                Navigator.of(context).pushNamed('dio_demo2');
+              },
+              child: Text('dio pro'),
             )
           ],
         ),
