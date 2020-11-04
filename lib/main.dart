@@ -1,5 +1,4 @@
 import 'dart:collection';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:myflutterwiget/basic.dart';
@@ -13,6 +12,9 @@ import 'package:myflutterwiget/pulltorefresh/pull_to_refresh_loadmore_demo.dart'
 import 'package:myflutterwiget/sliver/sliver_demo1.dart';
 import 'package:myflutterwiget/sliver/sliver_demo2.dart';
 import 'package:myflutterwiget/sliver/sliver_tab.dart';
+import 'package:myflutterwiget/tab_bar/tab_bar_demo.dart';
+import 'package:myflutterwiget/tab_bar/tab_bar_demo2.dart';
+import 'package:myflutterwiget/tab_bar/tab_bar_demo3.dart';
 import 'package:myflutterwiget/textspan/text_span_demo.dart';
 
 import 'dio/dio_demo2.dart';
@@ -42,7 +44,10 @@ class MyApp extends StatelessWidget {
           'pull_to_refesh_loadmore_demo': (context) =>
               PullToRefreshLoadMoreDemo(),
           'dio_demo': (context) => DioDemo(),
-          'dio_demo2': (context) => DioDemo2()
+          'dio_demo2': (context) => DioDemo2(),
+          'tab_bar_demo': (context) => TabBarDemo(),
+          'tab_bar_demo2': (context) => TabBarDemo2(),
+          'tab_bar_demo3': (context) => TabBarDemo3()
           //'page_view_detail': (context) => PageViewDetail()
         },
         //给带名字的页面传值用（Pass arguments to a named route）

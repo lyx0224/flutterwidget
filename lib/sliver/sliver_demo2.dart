@@ -21,6 +21,12 @@ class SliverDemo2 extends StatelessWidget {
                     fit: BoxFit.fitWidth,
                   ),
                 ),
+              ),
+              SliverToBoxAdapter(
+                child: Container(
+                  height: 40,
+                  color: Colors.redAccent,
+                ),
               )
             ];
           },

@@ -120,6 +120,32 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context).pushNamed('dio_demo2');
               },
               child: Text('dio pro'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                RaisedButton(
+                  color: Colors.cyanAccent,
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('tab_bar_demo');
+                  },
+                  child: Text('tabbar simple'),
+                ),
+                RaisedButton(
+                  color: Colors.cyanAccent,
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('tab_bar_demo2');
+                  },
+                  child: Text('tab bar 2'),
+                ),
+                RaisedButton(
+                  color: Colors.cyanAccent,
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('tab_bar_demo3');
+                  },
+                  child: Text('tab bar 3'),
+                )
+              ],
             )
           ],
         ),
