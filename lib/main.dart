@@ -7,6 +7,8 @@ import 'package:myflutterwiget/dio/dio_demo.dart';
 import 'package:myflutterwiget/home_page.dart';
 import 'package:myflutterwiget/page_view/pag_view_demo.dart';
 import 'package:myflutterwiget/page_view/page_view_detail.dart';
+import 'package:myflutterwiget/paint/paint_demo.dart';
+import 'package:myflutterwiget/paint/paint_demo2.dart';
 import 'package:myflutterwiget/pulltorefresh/pull_to_refresh_demo.dart';
 import 'package:myflutterwiget/pulltorefresh/pull_to_refresh_loadmore_demo.dart';
 import 'package:myflutterwiget/sliver/sliver_demo1.dart';
@@ -47,7 +49,9 @@ class MyApp extends StatelessWidget {
           'dio_demo2': (context) => DioDemo2(),
           'tab_bar_demo': (context) => TabBarDemo(),
           'tab_bar_demo2': (context) => TabBarDemo2(),
-          'tab_bar_demo3': (context) => TabBarDemo3()
+          'tab_bar_demo3': (context) => TabBarDemo3(),
+          'paint_demo': (context) => PaintDemo(),
+          'paint_demo2': (context) => PaintDemo2()
           //'page_view_detail': (context) => PageViewDetail()
         },
         //给带名字的页面传值用（Pass arguments to a named route）
