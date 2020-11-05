@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 class PaintDemo2 extends StatelessWidget {
-  TextStyle style3 =
-      TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w900);
-
-  double voteMarginBottom = 150;
-  double voteHeight = 50;
   @override
   Widget build(BuildContext context) {
+    double voteHeight = 50;
+    TextStyle style3 = TextStyle(
+        color: Colors.white, fontSize: 25, fontWeight: FontWeight.w900);
     return Scaffold(
       body: Stack(
         alignment: Alignment.center,
@@ -45,19 +43,78 @@ class PaintDemo2 extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-                margin: EdgeInsets.only(bottom: voteMarginBottom),
-                padding: EdgeInsets.symmetric(horizontal: 15.0),
-                child: Vote(
-                  h: voteHeight,
-                )),
+            child: Column(
+              //默认是max撑满，mainSize必须是min
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                    padding: EdgeInsets.symmetric(horizontal: 15.0),
+                    child: Vote(
+                      h: voteHeight,
+                    )),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    DotText(
+                      color: Colors.red,
+                      text: '特朗普得票',
+                    ),
+                    DotText(
+                      color: Colors.grey,
+                      text: '未开票',
+                    ),
+                    DotText(
+                      color: Colors.blue[300],
+                      text: '拜登得票',
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  '数据来自福克斯新闻，更新于北京时间11月5日06：07',
+                  style: TextStyle(color: Colors.white, fontSize: 12),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  height: 30,
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  margin: EdgeInsets.only(bottom: 50),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white54, width: 1),
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.transparent),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.refresh,
+                        size: 18,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        '刷新数据',
+                        style: TextStyle(color: Colors.white, fontSize: 10),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
           Positioned(
             child: Text(
               '214',
               style: style3,
             ),
-            bottom: voteMarginBottom + voteHeight - 15,
+            bottom: 205,
             left: 20,
           ),
           Positioned(
@@ -65,7 +122,7 @@ class PaintDemo2 extends StatelessWidget {
               '264',
               style: style3,
             ),
-            bottom: voteMarginBottom + voteHeight - 15,
+            bottom: 205,
             right: 20,
           ),
           Positioned(
@@ -74,10 +131,40 @@ class PaintDemo2 extends StatelessWidget {
               style:
                   TextStyle(color: Colors.white.withAlpha(230), fontSize: 12),
             ),
-            bottom: voteMarginBottom + voteHeight + 5,
-          )
+            bottom: 220,
+          ),
         ],
       ),
+    );
+  }
+}
+
+class DotText extends StatelessWidget {
+  final Color color;
+  final String text;
+
+  const DotText({Key key, this.color, this.text}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        SizedBox(
+          width: 4,
+        ),
+        Container(
+          color: color,
+          width: 4,
+          height: 4,
+        ),
+        SizedBox(
+          width: 4,
+        ),
+        Text(
+          text,
+          style: TextStyle(color: Colors.white, fontSize: 10),
+        ),
+      ],
     );
   }
 }
@@ -149,15 +236,24 @@ class Vote2Painter extends CustomPainter {
         bottomRight: _borderRadius);
     canvas.drawRRect(rRect, bgPaint);
 
-    canvas.drawLine(
-        Offset(size.width / 2, 0),
-        Offset(size.width / 2, size.height),
-        Paint()
-          ..color = Colors.white
-          ..strokeWidth = 2);
-
+    _drawDotLine(size, canvas);
     _drawValue(size, true, size.width / 2 - 50, canvas);
     _drawValue(size, false, size.width / 2 - 10, canvas);
+  }
+
+  _drawDotLine(Size size, Canvas canvas) {
+    double dashWidth = 4;
+    double dashSpace = 2;
+    double startY = 0;
+    while (startY < size.height) {
+      canvas.drawLine(
+          Offset(size.width / 2, startY),
+          Offset(size.width / 2, startY + dashWidth),
+          Paint()
+            ..color = Colors.white
+            ..strokeWidth = 2);
+      startY += dashWidth + dashSpace;
+    }
   }
 
   _drawValue(Size size, bool fromLeft, double value, Canvas canvas) {
