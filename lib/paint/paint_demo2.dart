@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 
 class PaintDemo2 extends StatelessWidget {
   @override
@@ -226,9 +227,9 @@ class Vote extends StatelessWidget {
 
 class Vote2Painter extends CustomPainter {
   Radius _borderRadius = Radius.circular(6);
-  Paint _redPaint = Paint()..color = Colors.red[300];
+  Paint _redPaint = Paint();
 
-  Paint _bluePaint = Paint()..color = Colors.blue[300];
+  Paint _bluePaint = Paint();
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -249,7 +250,7 @@ class Vote2Painter extends CustomPainter {
   }
 
   _drawDotLine(Size size, Canvas canvas) {
-    double dashWidth = 4;
+    double dashWidth = 2;
     double dashSpace = 2;
     double startY = 0;
     while (startY < size.height) {
@@ -258,7 +259,7 @@ class Vote2Painter extends CustomPainter {
           Offset(size.width / 2, startY + dashWidth),
           Paint()
             ..color = Colors.white
-            ..strokeWidth = 2);
+            ..strokeWidth = 1);
       startY += dashWidth + dashSpace;
     }
   }
@@ -266,12 +267,16 @@ class Vote2Painter extends CustomPainter {
   _drawValue(Size size, bool fromLeft, double value, Canvas canvas) {
     RRect valueRect;
     if (fromLeft) {
+      _redPaint.shader = ui.Gradient.linear(Offset(0, size.height),
+          Offset(value, size.height), [Colors.red[300], Colors.red]);
       valueRect = RRect.fromRectAndCorners(
           Rect.fromLTRB(0, 0, value, size.height),
           topLeft: _borderRadius,
           bottomLeft: _borderRadius);
       canvas.drawRRect(valueRect, _redPaint);
     } else {
+      _bluePaint.shader = ui.Gradient.linear(Offset(size.width - value, 0),
+          Offset(size.width, size.height), [Colors.blue, Colors.blue[300]]);
       valueRect = RRect.fromRectAndCorners(
           Rect.fromLTRB(size.width - value, 0, size.width, size.height),
           topRight: _borderRadius,
