@@ -5,7 +5,10 @@ class PaintDemo2 extends StatelessWidget {
   Widget build(BuildContext context) {
     double voteHeight = 50;
     TextStyle style3 = TextStyle(
-        color: Colors.white, fontSize: 25, fontWeight: FontWeight.w900);
+      color: Colors.white,
+      fontSize: 25,
+      fontFamily: 'Oswald',
+    );
     return Scaffold(
       body: Stack(
         alignment: Alignment.center,
@@ -29,13 +32,17 @@ class PaintDemo2 extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 35,
-                      fontWeight: FontWeight.bold),
+                      fontFamily: 'ZCOOLXiaoWei'),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 10),
                   child: Text(
                     '2020·US ELECTION',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontFamily: 'Oswald',
+                    ),
                   ),
                 )
               ],
@@ -153,9 +160,9 @@ class DotText extends StatelessWidget {
           width: 4,
         ),
         Container(
-          color: color,
           width: 4,
           height: 4,
+          decoration: ShapeDecoration(shape: CircleBorder(), color: color),
         ),
         SizedBox(
           width: 4,
@@ -323,17 +330,19 @@ class BgPainter extends CustomPainter {
     bluePath.moveTo(0, 0);
     bluePath.lineTo(size.width, 0);
     bluePath.lineTo(0, size.height);
+    bluePath.close();
     canvas.drawPath(bluePath, _bluePaint);
 
     Path redPath = Path();
     redPath.moveTo(size.width, 0);
     redPath.lineTo(size.width, size.height);
     redPath.lineTo(0, size.height);
+    redPath.close();
     canvas.drawPath(redPath, _redPaint);
   }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
+    return false;
   }
 }
