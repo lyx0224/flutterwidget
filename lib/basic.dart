@@ -62,9 +62,11 @@ class SearchInput extends StatelessWidget {
   const SearchInput({
     Key key,
     this.onClick,
+    this.hit,
   }) : super(key: key);
 
   final Function(String) onClick;
+  final String hit;
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +96,7 @@ class SearchInput extends StatelessWidget {
                   //suffixIcon: Icon(Icons.search),
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,
-                  hintText: 'search',
+                  hintText: hit ?? "please input",
                   hintStyle: TextStyle(color: Colors.grey)),
             ),
           ),

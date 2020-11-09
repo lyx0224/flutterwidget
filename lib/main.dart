@@ -1,9 +1,12 @@
 import 'dart:collection';
 
+import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:myflutterwiget/basic.dart';
 import 'package:myflutterwiget/bottom_tab_bar/demo.dart';
 import 'package:myflutterwiget/dio/dio_demo.dart';
+import 'package:myflutterwiget/fish_redux/list/UserList_page/page.dart';
+import 'package:myflutterwiget/fish_redux/login/Login_page/page.dart';
 import 'package:myflutterwiget/home_page.dart';
 import 'package:myflutterwiget/page_view/pag_view_demo.dart';
 import 'package:myflutterwiget/page_view/page_view_detail.dart';
@@ -24,6 +27,13 @@ import 'dio/dio_demo2.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  //fish-redux路由表
+  final AbstractRoutes fishReduxRoutes = PageRoutes(
+      pages: <String, Page<Object, dynamic>>{
+        'login_page': LoginPage(),
+        'user_list': UserListPage()
+      });
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,6 +74,10 @@ class MyApp extends StatelessWidget {
               var url = map['url'];
               return PageViewDetail(index: index, url: url);
             });
+          } else {
+            return MaterialPageRoute(
+                builder: (context) =>
+                    fishReduxRoutes.buildPage(setting.name, setting.arguments));
           }
         },
         home: HomePage());

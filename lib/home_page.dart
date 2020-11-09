@@ -182,7 +182,18 @@ class HomePage extends StatelessWidget {
                         style: Theme.of(context).textTheme.title,
                       ),
                       decoration: ShapeDecoration(
-                          color: Colors.amber, shape: CircleBorder())))
+                          color: Colors.amber, shape: CircleBorder()))),
+              RaisedButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('login_page');
+                },
+                color: Colors.indigo,
+                child: Text(
+                  'fish-redux',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+              )
             ],
           ),
         ),
