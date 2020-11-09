@@ -1,3 +1,8 @@
+/*
+ * jsontodart
+ * 
+ * https://jsontodart.com/
+ */
 class TestModel {
   List<Results> results;
   Info info;

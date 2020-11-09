@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myflutterwiget/custom_dlg.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -167,7 +168,21 @@ class HomePage extends StatelessWidget {
                     child: Text('paint2'),
                   )
                 ],
-              )
+              ),
+              FlatButton(
+                  onPressed: () {
+                    showDialog(context: context, child: CustomDialog());
+                  },
+                  child: Container(
+                      width: 50,
+                      height: 50,
+                      alignment: Alignment.center,
+                      child: Text(
+                        'dialog',
+                        style: Theme.of(context).textTheme.title,
+                      ),
+                      decoration: ShapeDecoration(
+                          color: Colors.amber, shape: CircleBorder())))
             ],
           ),
         ),

@@ -61,7 +61,11 @@ class PaintDemo2 extends StatelessWidget {
                       h: voteHeight,
                     )),
                 SizedBox(
-                  height: 20,
+                  height: 10,
+                ),
+                CustomPaint(painter: TrianglePainter(), size: Size(10, 10)),
+                SizedBox(
+                  height: 3,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -344,6 +348,27 @@ class BgPainter extends CustomPainter {
     redPath.lineTo(0, size.height);
     redPath.close();
     canvas.drawPath(redPath, _redPaint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
+  }
+}
+
+class TrianglePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.fill;
+    Path path = Path();
+    path.moveTo(size.width / 2, 0);
+    path.lineTo(size.width, size.height - 2);
+    path.lineTo(0, size.height - 2);
+    path.lineTo(size.width / 2, 0);
+    path.close();
+    canvas.drawPath(path, paint);
   }
 
   @override
