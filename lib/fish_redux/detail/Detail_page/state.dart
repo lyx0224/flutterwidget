@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:myflutterwiget/dio/model/test_model.dart';
+import 'package:myflutterwiget/fish_redux/detail/Detail_page/LocationInfo_component/state.dart';
 
 class DetailState implements Cloneable<DetailState> {
   Results results;
@@ -14,4 +15,12 @@ DetailState initState(Map<String, dynamic> args) {
   DetailState state = DetailState();
   state.results = result;
   return state;
+}
+
+class LocationInfoComponentConnector
+    extends ConnOp<DetailState, LocationInfoState> {
+  @override
+  LocationInfoState get(DetailState state) {
+    return LocationInfoState()..location = state.results.location;
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:myflutterwiget/dio/model/test_model.dart';
 import 'state.dart';
 
 Widget buildView(
@@ -9,12 +10,28 @@ Widget buildView(
   // Map<String, dynamic> map =
   //     ModalRoute.of(viewService.context).settings.arguments;
   // Results results = map['data'];
+  Results results = state.results;
   return Scaffold(
-    appBar: AppBar(
-      title: Text('${state.results.name.first} ${state.results.name.last}'),
-    ),
-    body: Center(
-      child: Text('detail'),
-    ),
+    body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              pinned: true,
+              expandedHeight: 200,
+              flexibleSpace: FlexibleSpaceBar(
+                centerTitle: false,
+                title: Text('${results.name.first} ${results.name.last}'),
+                background: Image.network(
+                  results.picture.large,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: viewService.buildComponent('location_component_slot'),
+            )
+          ];
+        },
+        body: Container()),
   );
 }
