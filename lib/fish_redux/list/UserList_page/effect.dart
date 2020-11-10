@@ -7,11 +7,13 @@ import 'state.dart';
 Effect<UserListState> buildEffect() {
   return combineEffects(<Object, Effect<UserListState>>{
     //页面初始化时候，加载数据
-    Lifecycle.initState: _onRefresh
+    Lifecycle.initState: _onRefresh,
+    UserListAction.retry: _onRefresh
   });
 }
 
 void _onRefresh(Action action, Context<UserListState> ctx) async {
+  ctx.state.loading = true;
   HttpManager().init(baseUrl: 'https://randomuser.me');
   HttpManager().get(
       url: '/api/',

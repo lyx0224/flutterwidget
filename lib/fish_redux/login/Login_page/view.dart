@@ -23,9 +23,16 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
             hit: 'username',
           ),
           SearchInput(
+            obscureText: true,
             controller: state.pwdController,
             hit: 'password',
           ),
+          Padding(
+              child: Text(
+                'username = 1, password = 1',
+                style: TextStyle(color: Colors.red),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 10)),
           RaisedButton(
             onPressed: () {
               dispatch(LoginActionCreator.getNavToListAction());

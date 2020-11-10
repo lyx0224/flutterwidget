@@ -14,6 +14,7 @@ Reducer<UserListState> buildReducer() {
 }
 
 UserListState reduceShowListData(UserListState state, Action action) {
+  state.loading = false;
   final UserListState newState = state.clone();
   TestModel testModel = action.payload;
   newState.testModel = testModel;
@@ -22,6 +23,7 @@ UserListState reduceShowListData(UserListState state, Action action) {
 }
 
 UserListState reduceShowErrorMsg(UserListState state, Action action) {
+  state.loading = false;
   final UserListState newState = state.clone();
   newState.errMsg = action.payload;
   return newState;
