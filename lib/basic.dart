@@ -63,10 +63,12 @@ class SearchInput extends StatelessWidget {
     Key key,
     this.onClick,
     this.hit,
+    this.controller,
   }) : super(key: key);
 
   final Function(String) onClick;
   final String hit;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +91,7 @@ class SearchInput extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: TextField(
+              controller: controller,
               onChanged: (s) {
                 searchContent = s;
               },

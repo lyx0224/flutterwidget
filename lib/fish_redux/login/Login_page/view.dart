@@ -19,9 +19,11 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
             padding: EdgeInsets.symmetric(vertical: 10),
           ),
           SearchInput(
+            controller: state.userNameController,
             hit: 'username',
           ),
           SearchInput(
+            controller: state.pwdController,
             hit: 'password',
           ),
           RaisedButton(
