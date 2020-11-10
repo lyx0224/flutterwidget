@@ -9,9 +9,9 @@
 |:----:|  :----:  | :----: |
 |![](doc/tab_bar_sliver.gif)| ![](doc/pull_to_refresh_loadmore.gif)  | ![](doc/pull_to_refresh.gif) |
 
-| Dio网络请求 |
-| :----: |
-| ![](doc/dio.gif) |
+| Dio网络请求 | fish-redux |
+| :----: | :----: |
+| ![](doc/dio.gif) |![](doc/fish-redux.gif)|
 
 | 美国大选（静态页面） |
 | :----: |
