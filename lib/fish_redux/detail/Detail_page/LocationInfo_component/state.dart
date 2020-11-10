@@ -5,7 +5,7 @@ class LocationInfoState implements Cloneable<LocationInfoState> {
   Location location;
   @override
   LocationInfoState clone() {
-    return LocationInfoState();
+    return LocationInfoState()..location = location;
   }
 }
 

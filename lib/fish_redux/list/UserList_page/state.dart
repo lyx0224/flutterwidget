@@ -1,7 +1,10 @@
+import 'dart:ui';
+
 import 'package:fish_redux/fish_redux.dart';
 import 'package:myflutterwiget/dio/model/test_model.dart';
+import 'package:myflutterwiget/fish_redux/global_store/global_state.dart';
 
-class UserListState implements Cloneable<UserListState> {
+class UserListState implements GlobalBaseState, Cloneable<UserListState> {
   TestModel testModel;
   String errMsg;
   bool loading = false;
@@ -10,8 +13,12 @@ class UserListState implements Cloneable<UserListState> {
   UserListState clone() {
     return UserListState()
       ..testModel = testModel
-      ..errMsg = errMsg;
+      ..errMsg = errMsg
+      ..themeColor = themeColor;
   }
+
+  @override
+  Color themeColor;
 }
 
 UserListState initState(Map<String, dynamic> args) {

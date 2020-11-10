@@ -10,6 +10,7 @@ Widget buildView(
   final ListAdapter adapter = viewService.buildAdapter();
   return Scaffold(
     appBar: AppBar(
+      backgroundColor: state.themeColor,
       title: Text('列表页'),
     ),
     body: SafeArea(

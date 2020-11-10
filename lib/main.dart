@@ -6,6 +6,8 @@ import 'package:myflutterwiget/basic.dart';
 import 'package:myflutterwiget/bottom_tab_bar/demo.dart';
 import 'package:myflutterwiget/dio/dio_demo.dart';
 import 'package:myflutterwiget/fish_redux/detail/Detail_page/page.dart';
+import 'package:myflutterwiget/fish_redux/global_store/global_state.dart';
+import 'package:myflutterwiget/fish_redux/global_store/global_store.dart';
 import 'package:myflutterwiget/fish_redux/list/UserList_page/page.dart';
 import 'package:myflutterwiget/fish_redux/login/Login_page/page.dart';
 import 'package:myflutterwiget/home_page.dart';
@@ -34,6 +36,24 @@ class MyApp extends StatelessWidget {
         'login_page': LoginPage(),
         'user_list': UserListPage(),
         'detail': DetailPage()
+      },
+      visitor: (String name, Page<Object, dynamic> page) {
+        if (page.isTypeof<GlobalBaseState>()) {
+          page.connectExtraStore(GlobalStore.store,
+              // AppStore.state 变化时, PageStore.state 该如何变化
+              (Object pageState, GlobalState appState) {
+            GlobalBaseState p = pageState;
+            if (p.themeColor != appState.themeColor) {
+              if (pageState is Cloneable) {
+                final GlobalBaseState newState =
+                    pageState.clone() as GlobalBaseState;
+                newState.themeColor = appState.themeColor;
+                return newState;
+              }
+            }
+            return pageState;
+          });
+        }
       });
 
   @override
