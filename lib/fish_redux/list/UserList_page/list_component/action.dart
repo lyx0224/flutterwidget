@@ -1,10 +1,10 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:myflutterwiget/dio/model/test_model.dart';
 
-//TODO replace with your own action
-enum UserListAction { action }
+enum UserLisComponentAction { itemClick }
 
 class UserListComponentActionCreator {
-  static Action onAction() {
-    return const Action(UserListAction.action);
+  static Action getItemClickAction(Results results) {
+    return Action(UserLisComponentAction.itemClick, payload: results);
   }
 }

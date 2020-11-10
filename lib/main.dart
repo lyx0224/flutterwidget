@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myflutterwiget/basic.dart';
 import 'package:myflutterwiget/bottom_tab_bar/demo.dart';
 import 'package:myflutterwiget/dio/dio_demo.dart';
+import 'package:myflutterwiget/fish_redux/detail/Detail_page/page.dart';
 import 'package:myflutterwiget/fish_redux/list/UserList_page/page.dart';
 import 'package:myflutterwiget/fish_redux/login/Login_page/page.dart';
 import 'package:myflutterwiget/home_page.dart';
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
   final AbstractRoutes fishReduxRoutes = PageRoutes(
       pages: <String, Page<Object, dynamic>>{
         'login_page': LoginPage(),
-        'user_list': UserListPage()
+        'user_list': UserListPage(),
+        'detail': DetailPage()
       });
 
   @override

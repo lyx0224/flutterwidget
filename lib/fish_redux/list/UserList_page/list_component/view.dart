@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:myflutterwiget/fish_redux/list/UserList_page/list_component/action.dart';
 
 import 'state.dart';
 
@@ -12,6 +13,8 @@ Widget buildView(
         vertical: 6,
       ),
       child: ListTile(
+        onTap: () => dispatch(
+            UserListComponentActionCreator.getItemClickAction(state.user)),
         trailing: Text(state.user.location.city),
         leading: CircleAvatar(
           backgroundImage: NetworkImage(state.user.picture.thumbnail),
