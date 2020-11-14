@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:myflutterwiget/basic.dart';
 import 'package:myflutterwiget/fish_redux/login/Login_page/action.dart';
+import 'package:myflutterwiget/widget/wrapper.dart';
 
 import 'state.dart';
 
@@ -37,12 +38,12 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
             controller: state.pwdController,
             hit: 'password',
           ),
-          Padding(
-              child: Text(
+          PaddingText(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              text: Text(
                 'username = 1, password = 1',
                 style: TextStyle(color: Colors.red),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 10)),
+              )),
           RaisedButton(
             onPressed: () {
               dispatch(LoginActionCreator.getNavToListAction());

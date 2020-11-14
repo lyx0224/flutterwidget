@@ -28,6 +28,7 @@ dependencies:
   dio: ^3.0.10
   fish_redux: ^0.3.4
   toast: ^0.1.5
+  magpie_fly: ^0.0.1
 
 dev_dependencies:
   flutter_test:

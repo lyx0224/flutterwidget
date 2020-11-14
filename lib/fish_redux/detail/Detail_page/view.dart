@@ -28,7 +28,13 @@ Widget buildView(
               ),
             ),
             SliverToBoxAdapter(
-              child: viewService.buildComponent('location_component_slot'),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  viewService.buildComponent('location_component_slot'),
+                  viewService.buildComponent('banner_component_slot')
+                ],
+              ),
             )
           ];
         },
