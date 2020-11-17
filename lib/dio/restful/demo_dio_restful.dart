@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:myflutterwiget/dio/model/random_user.dart';
+import 'package:myflutterwiget/dio/restful/base/error.dart';
+import 'package:myflutterwiget/dio/restful/base/response.dart';
 import 'package:myflutterwiget/dio/restful/rest_client.dart';
 
 class DemoRestfulDio extends StatefulWidget {
@@ -9,30 +11,30 @@ class DemoRestfulDio extends StatefulWidget {
 }
 
 class _DemoRestfulDioState extends State<DemoRestfulDio> {
-  RandomUser _randomUser;
-  String _errMsg = "";
-
+  BaseModel<RandomUser> _data;
   @override
   void initState() {
     super.initState();
-    final _client = RestClient(Dio());
-    _client.getRandomUser().then((data) {
+    _fetchData().then((data) {
       setState(() {
-        _randomUser = data;
-        _errMsg = null;
+        _data = data;
       });
-    }).catchError((Object e) {
-      switch (e.runtimeType) {
-        case DioError:
-          final msg = (e as DioError).response.statusMessage;
-          setState(() {
-            _randomUser = null;
-            _errMsg = msg;
-          });
-          break;
-        default:
-      }
     });
+  }
+
+  Future<BaseModel<RandomUser>> _fetchData() async {
+    final _client = RestClient(Dio());
+    RandomUser randomUser;
+    try {
+      randomUser = await _client.getRandomUser();
+    } catch (e) {
+      if (e is DioError) {
+        return BaseModel()..setError(ServerError.withError(e));
+      } else {
+        return BaseModel()..setError(ServerError.withMsg(e.toString()));
+      }
+    }
+    return BaseModel()..setData(randomUser);
   }
 
   @override
@@ -42,7 +44,15 @@ class _DemoRestfulDioState extends State<DemoRestfulDio> {
           title: Text('restful dio demo'),
         ),
         body: Center(
-          child: Text(_errMsg ?? _randomUser.results[0].email),
+          child: Text(_data == null ? "loading" : getContent()),
         ));
+  }
+
+  String getContent() {
+    if (_data.data == null) {
+      return _data.error.toString();
+    } else {
+      return (_data.data as RandomUser).results[0].email;
+    }
   }
 }
