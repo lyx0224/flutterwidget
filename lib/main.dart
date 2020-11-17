@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myflutterwiget/basic.dart';
 import 'package:myflutterwiget/bottom_tab_bar/demo.dart';
 import 'package:myflutterwiget/dio/dio_demo.dart';
+import 'package:myflutterwiget/dio/restful/demo_dio_restful.dart';
 import 'package:myflutterwiget/fish_redux/detail/Detail_page/page.dart';
 import 'package:myflutterwiget/fish_redux/global_store/global_state.dart';
 import 'package:myflutterwiget/fish_redux/global_store/global_store.dart';
@@ -79,6 +80,7 @@ class MyApp extends StatelessWidget {
               PullToRefreshLoadMoreDemo(),
           'dio_demo': (context) => DioDemo(),
           'dio_demo2': (context) => DioDemo2(),
+          'dio_restful': (context) => DemoRestfulDio(),
           'tab_bar_demo': (context) => TabBarDemo(),
           'tab_bar_demo2': (context) => TabBarDemo2(),
           'tab_bar_demo3': (context) => TabBarDemo3(),

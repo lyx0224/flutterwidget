@@ -110,19 +110,31 @@ class HomePage extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              RaisedButton(
-                color: Colors.amber,
-                onPressed: () {
-                  Navigator.of(context).pushNamed('dio_demo');
-                },
-                child: Text('dio simple'),
-              ),
-              RaisedButton(
-                color: Colors.amber,
-                onPressed: () {
-                  Navigator.of(context).pushNamed('dio_demo2');
-                },
-                child: Text('dio pro'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  RaisedButton(
+                    color: Colors.amber,
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('dio_demo');
+                    },
+                    child: Text('dio simple'),
+                  ),
+                  RaisedButton(
+                    color: Colors.amber,
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('dio_demo2');
+                    },
+                    child: Text('dio pro'),
+                  ),
+                  RaisedButton(
+                    color: Colors.amber,
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('dio_restful');
+                    },
+                    child: Text('dio restful'),
+                  )
+                ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

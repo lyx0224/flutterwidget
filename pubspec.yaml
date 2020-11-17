@@ -30,12 +30,14 @@ dependencies:
   toast: ^0.1.5
   magpie_fly: ^0.0.1
   json_serializable: ^3.5.0
-  #低版本的build_runner来兼容低版本的dart
-  build_runner: ^1.6.1
+  retrofit: any
+  logger: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  retrofit_generator: any
+  build_runner: any
 
 
 # For information on the generic Dart part of this file, see the
