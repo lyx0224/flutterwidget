@@ -29,6 +29,9 @@ dependencies:
   fish_redux: ^0.3.4
   toast: ^0.1.5
   magpie_fly: ^0.0.1
+  json_serializable: ^3.5.0
+  #低版本的build_runner来兼容低版本的dart
+  build_runner: ^1.6.1
 
 dev_dependencies:
   flutter_test:
