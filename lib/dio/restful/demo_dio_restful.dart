@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:myflutterwiget/dio/model/random_user.dart';
 import 'package:myflutterwiget/dio/restful/base/error.dart';
@@ -28,12 +29,14 @@ class _DemoRestfulDioState extends State<DemoRestfulDio> {
     try {
       randomUser = await _client.getRandomUser();
     } catch (e) {
+      println('fetch random error: ${e.toString()}');
       if (e is DioError) {
         return BaseModel()..setError(ServerError.withError(e));
       } else {
         return BaseModel()..setError(ServerError.withMsg(e.toString()));
       }
     }
+    println('fetch random success');
     return BaseModel()..setData(randomUser);
   }
 
@@ -44,15 +47,18 @@ class _DemoRestfulDioState extends State<DemoRestfulDio> {
           title: Text('restful dio demo'),
         ),
         body: Center(
-          child: Text(_data == null ? "loading" : getContent()),
+          child: Text(
+            _data == null ? "loading" : getContent(),
+            style: TextStyle(fontSize: 22.0),
+          ),
         ));
   }
 
   String getContent() {
     if (_data.data == null) {
-      return _data.error.toString();
+      return _data.error.errMsg;
     } else {
-      return (_data.data as RandomUser).results[0].email;
+      return _data.data.results[0].email;
     }
   }
 }

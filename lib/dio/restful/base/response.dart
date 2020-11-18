@@ -12,7 +12,7 @@ class BaseModel<T> {
     _data = data;
   }
 
-  get error => _error;
+  ServerError get error => _error;
 
-  get data => _data;
+  T get data => _data;
 }

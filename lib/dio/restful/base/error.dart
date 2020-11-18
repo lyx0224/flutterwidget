@@ -11,9 +11,7 @@ class ServerError implements Exception {
     _errorMessage = errMsg;
   }
 
-  getErrorMessage() {
-    return _errorMessage;
-  }
+  String get errMsg => _errorMessage;
 
   _handleError(DioError error) {
     switch (error.type) {
